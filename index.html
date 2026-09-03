@@ -1,1 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uma carta para você</title>
 
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #eee8dc;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #3d342c;
+  overflow: hidden;
+}
+
+.caderno {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.pagina {
+  flex: 0 0 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 45px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.folha {
+  width: min(90vw, 650px);
+  height: min(88vh, 750px);
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #fffdf7 0px,
+      #fffdf7 31px,
+      #ded8ca 32px
+    );
+  border-radius: 4px;
+  padding: 45px 35px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.18);
+  position: relative;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.folha::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #d6aaa5;
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+
+h2 {
+  font-size: 27px;
+  font-weight: normal;
+  margin-bottom: 22px;
+}
+
+.texto {
+  font-size: 19px;
+  line-height: 1.9;
+  text-align: left;
+  margin: 10px auto;
+  max-width: 540px;
+}
+
+.intro {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.data {
+  font-size: 25px;
+  letter-spacing: 3px;
+  margin: 15px 0 30px;
+}
+
+.contador {
+  font-size: 17px;
+  line-height: 1.8;
+  letter-spacing: 1px;
+}
+
+.foto {
+  width: 100%;
+  max-height: 390px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  margin: 15px 0;
+}
+
+.legenda {
+  font-size: 18px;
+  font-style: italic;
+  margin: 10px 0 6px;
+}
+
+.momento-data {
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+video {
+  width: 100%;
+  max-height: 390px;
+  border-radius: 3px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+
+.final {
+  font-size: 22px;
+  line-height: 1.9;
+}
+
+.eu-te-amo {
+  margin-top: 50px;
+  font-size: 30px;
+  letter-spacing: 3px;
+  font-style: italic;
+}
+
+.botao {
+  margin-top: 35px;
+  padding: 13px 28px;
+  background: transparent;
+  border: 1px solid #75675b;
+  color: #3d342c;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.botao:hover {
+  background: rgba(0,0,0,.05);
+}
+
+.dica {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  opacity: .65;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+audio {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="caderno">
+
+  <!-- PÁGINA 1 -->
+  <section class="pagina">
+    <div class="folha">
+
+      <h1>Para você</h1>
+
+      <p class="intro">
+        Uma pequena carta para guardar alguns dos momentos
+        mais importantes da nossa história.
+      </p>
+
+      <button class="botao" onclick="tocarMusica()">
+        Abrir a carta
+      </button>
+
+    </div>
+  </section>
+
+
+  <!-- PÁGINA 2 -->
+  <section class="pagina">
+    <div class="folha">
+
+      <h2>nossa história começou</h2>
+
+      <div class="data">27/12/2024</div>
+
+      <div class="contador" id="contador">
+        Calculando...
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PÁGINA 3 -->
+  <section class="pagina">
+    <div class="folha">
+
+      <p class="texto">
+        Você foi o melhor presente que Jesus me deu! Você foi minha melhor escolha! Você é o motivo de eu tentar ser alguém melhor todos os dias. Você foi a única pessoa que me mudou de verdade, a única pessoa que me fez deixar de ser orgulhoso! A única pessoa que me fez voltar à igreja! E eu espero que, um dia, nós possamos louvar a Ele juntos! Se eu tivesse mais 100 vidas, em todas elas eu escolheria você.
+      </p>
+
+      <img src="juntos.jpg" class="foto">
+
+      <p class="legenda">nossa única foto😔</p>
+
+    </div>
+  </section>
+
+
+  <!-- PÁGINA 4 -->
+  <section class="pagina">
+    <div class="folha">
+
+      <h2>momentos</h2>
+
+      <img src="momento1.jpg" class="foto">
+
+      <p class="momento-data">02/09/2025</p>
+
+      <p class="legenda">
+        Lembra quando saímos pra se ver?
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- PÁGINA 5 -->
+  <section class="pagina">
+    <div class="folha">
+
+      <h2>momentos</h2>
+
+      <img src="momento2.jpg" class="foto">
+
+      <p class="momento-data">04/01/2025</p>
+
+      <p class="legenda">
+        Quando vc estava terminando comigo🙄
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- PÁGINA 6 -->
+  <section class="pagina">
+    <div class="folha">
+
+      <h2>mais um momento</h2>
+
+      <video controls playsinline>
+        <source src="video.mp4" type="video/mp4">
+      </video>
+
+      <p class="momento-data">30/03/2026</p>
+
+      <p class="legenda">
+        vc não esqueceu disso né?
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- PÁGINA 7 -->
+  <section class="pagina">
+    <div class="folha">
+
+      <p class="final">
+        Meu amor, nossa história não está sendo fácil, mais está sendo incrível, e a cada dia q passa, eu me sinto mais feliz ao seu lado!!! Eu nunca vou desistir de você minha cachiadinha!! Obrigado por fazer parte de todos meus dias, obrigado por conseguir alegramos, você e minha melhor amiga!! Meu primeiro e único amor!!!
+      </p>
+
+      <div class="eu-te-amo">
+        eu te amo infinitamente
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<div class="dica">
+  arraste para o lado →
+</div>
+
+<script>
+function tocarMusica() {
+  const musica = document.getElementById("musica");
+
+  musica.play().catch(() => {
+    alert("Toque novamente para iniciar a música.");
+  });
+}
+
+function atualizarContador() {
+  const inicio = new Date(2024, 11, 27);
+  const agora = new Date();
+
+  let anos = agora.getFullYear() - inicio.getFullYear();
+  let meses = agora.getMonth() - inicio.getMonth();
+  let dias = agora.getDate() - inicio.getDate();
+
+  if (dias < 0) {
+    meses--;
+    const ultimoMes = new Date(
+      agora.getFullYear(),
+      agora.getMonth(),
+      0
+    ).getDate();
+
+    dias += ultimoMes;
+  }
+
+  if (meses < 0) {
+    anos--;
+    meses += 12;
+  }
+
+  document.getElementById("contador").innerHTML =
+    anos + " ano(s), " +
+    meses + " mês(es) e " +
+    dias + " dia(s)";
+}
+
+atualizarContador();
+setInterval(atualizarContador, 86400000);
+</script>
+
+</body>
+  </html>
